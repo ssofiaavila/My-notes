@@ -1,0 +1,27 @@
+<h2>Create new note</h2>
+<form [formGroup]="noteForm">
+    <mat-form-field>
+      <input matInput placeholder="Name" formControlName="name">
+    </mat-form-field>
+  
+    <mat-form-field>
+      <textarea matInput placeholder="Description" formControlName="description"></textarea>
+    </mat-form-field>
+  
+    <mat-form-field>
+      <mat-label>Category</mat-label>
+      <mat-select formControlName="noteCategoryId">
+        <mat-option *ngFor="let category of categories" [value]="category.id">
+          {{ category.name }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  
+    <mat-checkbox formControlName="isArchived">Archive</mat-checkbox>
+  
+    <div class="actions">
+      <button mat-button (click)="saveNote()">Save</button>
+      <button mat-button (click)="dialogRef.close()">Cancel</button>
+    </div>
+  </form>
+  

@@ -1,0 +1,26 @@
+<form [formGroup]="loginForm" (ngSubmit)="loginUser()" class="border p-3 rounded-3 form-container" style="max-width: 400px; margin: 2rem auto; padding: 20px; border-radius: 10px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);">    <div class="row g-0">
+    <div class="col text-center p-2 mb-3">
+        <h2 class="fs-3">Log in</h2>
+    </div>
+</div>
+<div class="row">
+    <mat-form-field class="col mb-3">
+        <label for="username" class="form-label">Username</label>
+        <input matInput type="text"  formControlName="username">
+        <div class="form-text text-danger" *ngIf="Username.value=='' && Username.touched ">Username</div>
+    </mat-form-field>
+    <mat-form-field class="col mb-3">
+        <label for="username" class="form-label">Password</label>
+        <input matInput type="password"  formControlName="password">
+        <div class="form-text text-danger" *ngIf="Password.value=='' && Password.touched ">Password</div>
+    </mat-form-field>
+</div>
+<div class="row">
+    <div class="col-6 offset-3">
+        <div class="d-grid">
+            <button mat-raised-button type="submit" style="border-color: #ffc107 ; color: #ffc107">Log in</button>
+        </div>
+    </div>
+    
+</div>
+</form>

@@ -1,0 +1,28 @@
+<h2>Edit note</h2>
+<form [formGroup]="notaForm">
+  <mat-form-field>
+    <mat-label>Nombre</mat-label>
+    <input matInput id="name" formControlName="name" />
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Descripción</mat-label>
+    <textarea matInput id="description" formControlName="description"></textarea>
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Categoría</mat-label>
+    <mat-select formControlName="noteCategoryId">
+      <mat-option *ngFor="let category of categorias" [value]="category.id">
+        {{ category.name }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-checkbox formControlName="isArchived">Archived</mat-checkbox>
+
+  <div class="actions">
+    <button mat-raised-button color="primary" (click)="saveChanges()">Save</button>
+    <button mat-raised-button mat-dialog-close>Cancel</button>
+  </div>
+</form>

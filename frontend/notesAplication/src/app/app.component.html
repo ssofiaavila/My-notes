@@ -1,0 +1,14 @@
+<div> 
+  <mat-toolbar style="background-color: #b9b9b9;">
+    <mat-toolbar-row>
+      
+      
+      <a [routerLink]="['/']" mat-button *ngIf="!userService.isLogged()"  style="color: black;">Log in</a>      
+      <a [routerLink]="['/myNotes']" mat-button *ngIf="userService.isLogged()"  style="color: black;">My notes</a>
+      <a mat-button *ngIf="userService.isLogged()"(click)="cerrarSesion()"  style="color: black;">Log out</a>
+    </mat-toolbar-row>
+  </mat-toolbar>
+  
+   
+      <router-outlet></router-outlet>
+</div>

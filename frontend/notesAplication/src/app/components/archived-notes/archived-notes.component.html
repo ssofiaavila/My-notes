@@ -1,0 +1,30 @@
+<button mat-raised-button [routerLink]="['../myNotes']">Active notes</button>
+
+<h1> Archived notes</h1>
+
+<mat-form-field>
+  <mat-label>Filter by category</mat-label>
+  <mat-select [(value)]="selectedCategory">
+    <mat-option *ngFor="let category of categories" [value]="category.id">
+      {{ category.name }}
+    </mat-option>
+  </mat-select>
+</mat-form-field>
+
+<mat-accordion>
+  <mat-expansion-panel *ngFor="let nota of notas">
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        {{ nota.name }}
+      </mat-panel-title>
+      <mat-panel-description>
+        {{ nota.noteCategory.name }}
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+    <p>{{ nota.description }}</p>
+    <div>
+    </div>
+    <button mat-raised-button (click)="editNote(nota)">Edit note</button>
+    <button mat-raised-button (click)="desarchivarNota(nota.id)">Unarchive note</button>
+    <button mat-raised-button (click)="deleteNote(nota.id)">Delete note</button>  </mat-expansion-panel>
+</mat-accordion>

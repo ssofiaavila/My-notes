@@ -1,0 +1,44 @@
+<h1> Note categories</h1>
+<!-- category.component.html -->
+
+<!-- Formulario de creación de categorías -->
+<div class="container mb-4">
+    <form [formGroup]="categoryForm">
+      <mat-form-field class="col-lg-5 ">
+        Add note category<input matInput type="text" formControlName="name" required>
+        
+        <button mat-raised-button id="refresh"  type="submit"
+          (click)="createCategory()">Add</button>
+      </mat-form-field>
+  
+  
+    </form>
+  </div>
+
+<mat-table [dataSource]="categories">
+    <!-- Columna para el nombre de la categoría -->
+    <ng-container matColumnDef="name">
+      <mat-header-cell *matHeaderCellDef>Category name</mat-header-cell>
+      <mat-cell *matCellDef="let category">{{ category.name }}</mat-cell>
+    </ng-container>
+  
+    <!-- Columna para editar la categoría -->
+    <ng-container matColumnDef="edit">
+      <mat-header-cell *matHeaderCellDef>Edit</mat-header-cell>
+      <mat-cell *matCellDef="let category">
+        <button mat-raised-button color="primary" (click)="editCategory(category.id)">Edit</button>
+      </mat-cell>
+    </ng-container>
+  
+    <!-- Columna para eliminar la categoría -->
+    <ng-container matColumnDef="delete">
+      <mat-header-cell *matHeaderCellDef>Eliminar</mat-header-cell>
+      <mat-cell *matCellDef="let category">
+        <button mat-raised-button color="warn" (click)="deleteCategory(category.id)">Delete</button>
+      </mat-cell>
+    </ng-container>
+  
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+  </mat-table>
+  
